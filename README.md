@@ -1,7 +1,9 @@
 # Wine Market Analysis Project
 
 ## Overview
-This project aimed to analyze the wine market using SQL queries to derive insights and make data-driven decisions. By addressing key questions, we aimed to provide actionable recommendations to increase sales, prioritize marketing efforts, recognize top wineries, identify customer preferences, and focus on wine profiles for better insights.
+This project aimed to analyze the wine market using SQL queries to derive meaningful insights. The aim was to provide actionable recommendations to increase sales, prioritize marketing efforts, recognize top wineries, identify customer preferences and focus on visualizing wine profiles for better insights.
+
+The notebook will show you the analysis pipeline.
 
 ## Key Questions and Findings
 
@@ -17,8 +19,12 @@ This project aimed to analyze the wine market using SQL queries to derive insigh
 ### 4. Identify which countries produce the best rated wines
 - Developed visual representations showcasing the average wine ratings for each country and vintage to provide insights into regional and temporal trends.
 
+### Examples of results
+![spider_plot_Le Mesnil Blanc de Blancs (Cuvée S) Brut Champagne](https://github.com/brain8d/wine-market-analysis/assets/153182255/6edc63fe-c1c4-47d7-bfda-da38e63569b4)
+![wines_country](https://github.com/brain8d/wine-market-analysis/assets/153182255/c38f7cf7-6403-4ee5-9552-3b6fb6b823e2)
+
 ## Data Sources
-The analysis utilized a comprehensive dataset containing information on wine ratings, grape varieties, wineries, countries, vintages, and customer preferences.
+The analysis utilized a dataset containing information on wine ratings, grape varieties, wineries, countries, vintages, and customer preferences based on **Vivino**
 
 ## Tools and Technologies
 SQL queries were employed to extract, transform, and analyze data from the database.
