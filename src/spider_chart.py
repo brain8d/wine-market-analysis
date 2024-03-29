@@ -99,20 +99,53 @@ def radar_factory(num_vars, frame='circle'):
     register_projection(RadarAxes)
     return theta
 
+
+def spider_plot(df: pd.DataFrame, name: str = 'unknown',  save_path: str = None):
+    '''input a dataframe with at least two columns: one for the flavours name and one with the counts/score '''
+    # data = df[df.name == name]
+    spoke_labels = df.flavor
+    N = len(df.flavor)
+    theta = radar_factory(N, frame='polygon')
+
+    # Initialize figure
+    fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(projection='radar'))
+    fig.subplots_adjust(wspace=0.25, hspace=0.20, top=0.85, bottom=0.05)
+
+    # Plot the four cases from the example data on separate axes --> from example
+    ax.set_rgrids([0.2, 0.4, 0.6, 0.8])
+    ax.set_title(name,  position=(0.5, 1.1), ha='center')
+
+    # Insert data
+    # print(name)
+    # print(df.flavor, df.flavor_count)    
+    ax.plot(theta, df.flavor_count)
+    ax.fill(theta, df.flavor_count,  alpha=0.25)
+    ax.set_varlabels(spoke_labels)
+
+    if save_path:
+        plt.savefig(save_path, bbox_inches='tight')
+    plt.show() 
+
+
+
+# spider_plot(data, "'Giulio Ferrari' Riserva del Fondatore", save_path= "output/radar_plot_Ferrari.png")
+
+
+
 # Example with vine flavour profile from the vivino project
 
 if __name__ == '__main__':
 
     data = pd.DataFrame({
         "name": "'Giulio Ferrari' Riserva del Fondatore",
-        "group_name": ['black_fruit', 'citrus_fruit', 'dried_fruit', 'earth',
+        "flavor": ['black_fruit', 'citrus_fruit', 'dried_fruit', 'earth',
         'floral', 'microbio', 'non_oak', 'oak', 
         'red_fruit', 'spices', 'tree_fruit', 'tropical_fruit', 'vegetal'],
-        "flavour_count": [2, 12, 2, 16, 5, 11, 12, 16, 7, 7, 14, 5, 8]
+        "flavor_count": [2, 12, 2, 16, 5, 11, 12, 16, 7, 7, 14, 5, 8]
     })
-    spoke_labels = data.group_name
+    spoke_labels = data.flavor
 
-    N = len(data.group_name)
+    N = len(data.flavor)
     theta = radar_factory(N, frame='polygon')
 
 
@@ -126,8 +159,8 @@ if __name__ == '__main__':
 
     # Insert data
 
-    line = ax.plot(theta, data.flavour_count)
-    ax.fill(theta, data.flavour_count,  alpha=0.25)
+    line = ax.plot(theta, data.flavor_count)
+    ax.fill(theta, data.flavor_count,  alpha=0.25)
     ax.set_varlabels(spoke_labels)
 
     plt.show()
